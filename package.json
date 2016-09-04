@@ -1,7 +1,7 @@
 {
   "name": "cf-banded",
   "title": "cf-banded",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "front-end framework designed to style websites visually devided with horizontal colored bands.",
   "main": "src/cf-banded.css",
   "author": {
