@@ -6,11 +6,18 @@
   "main": "src/cf-banded.css",
   "author": {
     "name": "Daniel Matias Ferrer",
-    "url": "https://controlledflame.com"
+    "url": "https://github.com/xassbit/cf-banded"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquery/jquery.git"
   },
   "license": "MIT",
   "dependencies": {
     "jquery": "^3.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/xassbit/cf-banded/issues"
   },
   "devDependencies": {
     "grunt": "^1.0.0",
