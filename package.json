@@ -3,7 +3,7 @@
   "title": "cf-banded",
   "version": "0.1.0",
   "description": "front-end framework designed to style websites visually devided with horizontal colored bands.",
-  "main": "src/cf-banded.css",
+  "main": ["lib/cf-banded.css", "lib/cf-banded.js"],
   "author": {
     "name": "Daniel Matias Ferrer",
     "url": "https://github.com/xassbit/cf-banded"
