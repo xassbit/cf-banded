@@ -1,0 +1,25 @@
+//------------
+// Fonts
+//------------
+
+$main-font: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+$alt-font: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
+
+//------------
+// Colors
+//------------
+
+// The three main colors,
+// which are used in most of the style
+$primary-color: #191970;
+$secondary-color: #b51a00;
+$background-color: #FFFFFF;
+
+
+// The three inverted colors,
+// which are just tweaks of the main colors
+// since they might not look so good
+// against an inverted background
+$inverted-background-color: invert($background-color);
+$inverted-primary-color: #afc6e9;
+$inverted-secondary-color: #c83737;

@@ -1,0 +1,317 @@
+@import 'cf-vars';
+
+* {
+    color: $primary-color;
+    font-family: $main-font;
+    margin: 0;
+    padding: 0;
+}
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+// Elements and blocks
+
+@mixin text($background, $color1, $color2, $alignment) {
+    .cf-header {
+        color: $color1;
+        text-align: $alignment;
+        padding: 10px;
+        font-weight: 100;
+        font-size: 25pt;
+    }
+
+    .cf-subheader {
+        color: $color2;
+        text-align: $alignment;
+        padding: 10px;
+        font-weight: 800;
+        font-size: 22pt;
+    }
+
+    .cf-title {
+        color: $color1;
+        text-align: $alignment;
+        padding: 10px;
+        font-weight: 100;
+        font-size: 20pt;
+    }
+
+    .cf-subtitle {
+        color: $color2;
+        text-align: $alignment;
+        padding: 10px;
+        font-weight: 800;
+        font-size: 18pt;
+    }
+
+    .cf-content-text {
+        color: $color1;
+        text-align: $alignment;
+        margin: 0 10%;
+        padding: 10px;
+    }
+}
+
+@mixin navigation($background, $color1, $background2) {
+    @media  screen and (max-width: 667px) {
+        .cf-nav-hamburger {
+            cursor: pointer;
+            color: $color1;
+        }
+        
+        .cf-nav {
+            margin-top: 20px;
+            display: none;
+            position: absolute;
+            width: 90%;
+            height: auto;
+            margin-left: 5%;
+            background-color: transparentize($background2, 0.1);
+            transition: 350ms;
+            -webkit-box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+            -moz-box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+            box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+            z-index: 9999;
+            
+            ul {
+                list-style: none;
+            }
+
+            li ul {
+                background-color: transparentize(darken($background2, 10%), 0.7)
+            }
+
+            a {
+                padding: 10px 0;
+                width: 100%;
+                display:inline-block;
+                text-decoration: none;
+                color: $color1;
+                &:visited {
+                    color: $color1;
+                }
+                &:hover {
+                    background-color: transparentize(darken($background2, 10%), 0.5)
+                }
+            }
+        }
+        
+        .cf-nav.active {
+            display: block;
+        }
+    }
+    @media  screen and (min-width: 668px) {
+        .cf-nav-hamburger {
+            display: none;
+        }
+        
+        .cf-nav {
+            ul {
+                list-style: none;
+                margin: 0 20px 30px;
+                padding: 0;
+                background: $background;
+                border-bottom: 1px solid $color1;
+            }
+
+            ul:before, ul:after {
+                content:"";
+                display:table;
+            }
+
+            ul:after {
+                clear:both;
+            }
+
+            ul > li {
+                position:relative;
+                float: left;
+            }
+
+            a {
+                display: block;
+                padding: 10px 20px;
+                line-height: 1.2em;
+                color: $color1;
+                text-decoration: none;
+                font-weight: 100;
+
+                &:hover {
+                    font-weight: 800;
+                }
+
+                &:visited {
+                    color: $color1;
+                }
+            }
+
+            .cf-nav-brand a {
+                font-weight: 800;
+            }
+
+            li ul {
+                text-align: left;
+                position: absolute;
+                border-top: 1px solid $color1;
+                border-bottom: none;
+                left: 0;
+                top: 39px;
+                z-index: 1;
+                max-height: 0;
+                overflow: hidden;
+                -webkit-transform: perspective(400) rotate3d(1,0,0,-90deg);
+                -webkit-transform-origin: 50% 0;
+                -webkit-transition: 350ms;
+                -moz-transition: 350ms;
+                -o-transition: 350ms;
+                transition: 350ms;
+                -webkit-box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+                -moz-box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+                box-shadow: 0px 5px 8px -3px rgba(0,0,0,0.67);
+            }
+
+            li ul li {
+                width: 150px;
+            }
+
+            li ul a {
+                color: $color1;
+                border: none;
+                background-color: $background2;
+
+                &:hover {
+                    background-color: darken($background, 10%);
+                }
+
+                &:visited {
+                    color: $color1;
+                }
+            }
+
+            ul > li:hover ul {
+                max-height: 1000px;
+                -webkit-transform: perspective(400) rotate3d(0,0,0,0);
+            }
+        }
+    }
+}
+
+@mixin buttons($background, $color1, $color2) {
+    [class^="cf-btn"] {
+        padding: 16px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        -webkit-transition-duration: 0.7s;
+        transition-duration: 0.7s;
+    }
+}
+
+// Grid system
+
+@mixin column($width, $float, $background, $color1, $color2, $alignment) {
+    width: $width;
+    float: $float;
+
+    @include text($background, $color1, $color2, $alignment);
+}
+
+@mixin band($background, $color1, $color2) {
+    color: $color1;
+    background-color: $background;
+    padding: 20px 0;
+    text-align: center;
+    
+    @include clearfix();
+    @include buttons($background, $color1, $color2);
+    
+    a {
+        color: $color1;
+    }
+    
+    a:visited {
+        color: darken($color2, 10%);
+    }
+    
+    .cf-btn-primary {
+        color: $color1;
+        background-color: $background;
+        border: $color1;
+        border-width: 2px;
+        border-style: solid;
+        border-color: $color1;
+        
+        &:hover {
+            color: $background;
+            background-color: $color1;
+        }
+    }
+    
+    .cf-btn-secondary {
+        color: $color2;
+        background-color: $background;
+        border: $color2;
+        border-width: 2px;
+        border-style: solid;
+        border-color: $color2;
+        
+        &:hover {
+            color: $background;
+            background-color: $color2;
+        }
+    }
+    
+    .cf-single-col {
+        @include column(100%, none, $background, $color1, $color2, center);
+    }
+    
+    .cf-left-col {
+        @media  screen and (max-width: 667px) { 
+            @include column(100%, none, $background, $color1, $color2, center);
+        }
+        
+        @media  screen and (min-width: 668px) {
+            @include column(50%, left, $background, $color1, $color2, left);
+        }
+    }
+    
+    .cf-right-col {
+        @media  screen and (max-width: 667px) { 
+            @include column(100%, none, $background, $color1, $color2, center);
+        }
+        
+        @media  screen and (min-width: 668px) {
+            @include column(50%, left, $background, $color1, $color2, right);
+        }
+    }
+}
+
+// Colors
+
+.cf-banded{
+    .cf-band-neutral {
+        @include band($background-color, $primary-color, $secondary-color);
+        @include navigation($background-color, $primary-color, darken($background-color, 2%));
+    }
+    .cf-band-primary {
+        @include band($primary-color, $background-color, $background-color);
+        @include navigation($primary-color, $background-color, darken($primary-color, 2%));
+    }
+    .cf-band-secondary {
+        @include band($secondary-color, $background-color, $background-color);
+        @include navigation($secondary-color, $background-color, darken($secondary-color, 2%));
+    }
+    .cf-band-inverted {
+        @include band($inverted-background-color, $inverted-primary-color, $inverted-secondary-color);
+        @include navigation($inverted-background-color, $inverted-primary-color, lighten($inverted-background-color, 10%));
+    }
+}
